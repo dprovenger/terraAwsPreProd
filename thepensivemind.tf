@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+# Documentation related to aws provider https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 provider "aws" {
     region = "us-east-2"
 }
@@ -24,7 +25,14 @@ data "aws_ami" "app" {
 resource "aws_instance" "Redhat_8" {
   ami = data.aws_ami.app.id
   instance_type = "t2.micro"
+  
   root_block_device {
     volume_size = 10 # Gigs
+  }
+
+  tags = {
+    Name = "thepensivemind"
+    Environment = "preProd"
+    ManagedBy = "terraform"
   }
 }
