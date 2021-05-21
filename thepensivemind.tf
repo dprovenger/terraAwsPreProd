@@ -5,6 +5,12 @@ terraform {
       version = "3.42.0"
     }
   }
+
+  backend "s3" {
+    bucket = "terraform-thepensivemind"
+    key = "thepensivemind/terraform.tfstate"
+    region = "us-east-2"
+  }
 }
 
 # Documentation related to aws provider https://registry.terraform.io/providers/hashicorp/aws/latest/docs
