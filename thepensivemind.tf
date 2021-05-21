@@ -16,7 +16,8 @@ data "aws_ami" "app" {
     most_recent = true
     filter {
       name = "name"
-      values = ["RHEL_HA-8.4.0_HVM-20210504-x86_64-2-*"]
+      values = ["RHEL_HA-8.4.0_HVM-20210504-x86_64-2-Hourly2-GP2*"]
     }
     owners = ["309956199498"] # RedHat images
 }
+
