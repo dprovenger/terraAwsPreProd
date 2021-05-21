@@ -52,5 +52,5 @@ resource "aws_eip" "app_eip" {
 # Removing association to make sure terraform doesn't delete this IP with ec2
 resource "aws_eip_association" "app_eip_assoc" {
   instance_id = aws_instance.Redhat_8.id
-  allocation_id = aws_eip.app_eip.allocation_id
+  allocation_id = aws_eip.app_eip.id
 }
