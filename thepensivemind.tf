@@ -36,3 +36,9 @@ resource "aws_instance" "Redhat_8" {
     ManagedBy = "terraform"
   }
 }
+
+# Adding elastic IP to ec2
+resource "aws_eip" "app_eip" {
+  instance = aws_instance.Redhat_8.id
+  vpc = true
+}
