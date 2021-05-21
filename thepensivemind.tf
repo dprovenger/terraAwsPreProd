@@ -21,3 +21,10 @@ data "aws_ami" "app" {
     owners = ["309956199498"] # RedHat images
 }
 
+resource "aws_instance" "Redhat_8" {
+  ami = data.aws_ami.app.id
+  instance_type = "t2.micro"
+  root_block_device {
+    volume_size = 10 # Gigs
+  }
+}
