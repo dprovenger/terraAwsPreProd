@@ -42,6 +42,10 @@ resource "aws_eip" "app_eip" {
   #instance = aws_instance.Redhat_8.id -> commenting out due to association below
   vpc = true
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
   tags = {
     Name = "thepensivemind"
     Environment = "preProd"
