@@ -39,6 +39,18 @@ resource "aws_instance" "Redhat_8" {
 
 # Adding elastic IP to ec2
 resource "aws_eip" "app_eip" {
-  instance = aws_instance.Redhat_8.id
+  #instance = aws_instance.Redhat_8.id -> commenting out due to association below
   vpc = true
+
+  tags = {
+    Name = "thepensivemind"
+    Environment = "preProd"
+    ManagedBy = "terraform"
+  }
+}
+
+# Removing association to make sure terraform doesn't delete this IP with ec2
+resource "aws_eip_association" "app_eip_assoc" {
+  instance_id = aws_instance.Redhat_8.id
+  allocation_id = aws_eip.app_eip.allocation_id
 }
